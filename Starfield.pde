@@ -1,25 +1,38 @@
 //your code here
 void setup()
 {
-	//your code here
+	size(500,500);
 }
 void draw()
 {
-	//your code here
+	background(0);
 }
-class NormalParticle
+class NormalParticle implements Particle
 {
-	//your code here
+	NormalParticle(){
+		x = 250;
+		y = 250;
+		r = 1;
+		c = 225;
+	}
+
+	void show{
+		fill(c);
+		ellipse(x,y,r,r);
+	}
+	void move{
+
+	}
 }
 interface Particle
 {
-	//your code here
+	public int r, x, y, c;
 }
-class OddballParticle //uses an interface
+class OddballParticle implements Particle
 {
 	//your code here
 }
-class JumboParticle //uses inheritance
+class JumboParticle extends NormalParticle
 {
 	//your code here
 }
