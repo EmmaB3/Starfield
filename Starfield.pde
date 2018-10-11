@@ -7,8 +7,9 @@ void draw()
 {
 	background(0);
 }
-class NormalParticle implements Particle
+class NormalParticle
 {
+  public int r, x, y, c;
 	NormalParticle(){
 		x = 250;
 		y = 250;
@@ -16,17 +17,17 @@ class NormalParticle implements Particle
 		c = 225;
 	}
 
-	void show{
+	void show(){
 		fill(c);
 		ellipse(x,y,r,r);
 	}
-	void move{
+	void move(){
 
 	}
 }
 interface Particle
 {
-	public int r, x, y, c;
+	
 }
 class OddballParticle implements Particle
 {
@@ -36,4 +37,3 @@ class JumboParticle extends NormalParticle
 {
 	//your code here
 }
-
