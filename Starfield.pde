@@ -1,7 +1,7 @@
 PImage neutral;
 PImage angry;
 PImage what;
-Particle[] friends = new Particle[200];
+Particle[] friends = new Particle[300];
 void setup()
 {
 	size(500,500);
@@ -9,9 +9,10 @@ void setup()
   angry = loadImage("mad.png");
   what = loadImage("watching.png");
   for(int a = 0; a < friends.length; a++){
-    friends[a] = a%25 == 0? new JumboParticle() : new NormalParticle();
+    friends[a] = a%15 == 0? new JumboParticle() : new NormalParticle();
   }
   friends[0] = new OddballParticle();
+  friends[299] = new OddballParticle();
   imageMode(CENTER);
 }
 void draw()
@@ -24,17 +25,20 @@ void draw()
 }
 class NormalParticle implements Particle
 {
-  public int x, y;
+  public double x, y,speed,angle;
 	NormalParticle(){
 		x = 250;
 		y = 250;
+    angle = Math.random()*2*Math.PI;
+    speed = Math.random()*10;
 	}
 
 	public void show(){
-		image(neutral, x,y,width/15,height/15);
+		image(neutral, (float)x,(float)y,width/30,height/30);
 	}
 	public void move(){
-    x+= (int)(Math.random()*21) - 10;
+    x+= Math.sin(angle)*speed;
+    y+= Math.cos(angle)*speed;
 	}
 }
 interface Particle
@@ -44,21 +48,34 @@ interface Particle
 }
 class OddballParticle implements Particle
 {
-  int x, y;
+  int x, y, xDir, yDir,xSpeed,ySpeed;
    OddballParticle(){
      x = 250;
      y = 250;
+     xDir = Math.random()*2 < 1 ? -1:1;
+     yDir = Math.random()*2 < 1 ? -1:1;
+     xSpeed = (int)(Math.random()*11);
+     ySpeed = (int)(Math.random()*11);
    }
 	public void move(){
-    x+= (int)(Math.random()*11) - 5;
+    x+= xSpeed*xDir;
+    y+= ySpeed*yDir;
+    if(x < 0 || x > 500){
+      xDir *= -1;
+      xSpeed = (int)(Math.random()*11);
+    }
+    if(y < 0 || y > 500){
+      yDir *= -1;
+      ySpeed = (int)(Math.random()*11);
+    }
 	}
 	public void show(){
-		image(angry, x, y, width/15, height/15);
+		image(angry, x, y, width/20, height/20);
 	}
 }
 class JumboParticle extends NormalParticle
 {
 	public void show(){
-    image(what, x, y, width/10,height/10);
+    image(what, (float)x, (float)y, width/13,height/13);
   }
 }
