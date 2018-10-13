@@ -54,23 +54,23 @@ class OddballParticle implements Particle
      y = 250;
      xDir = Math.random()*2 < 1 ? -1:1;
      yDir = Math.random()*2 < 1 ? -1:1;
-     xSpeed = (int)(Math.random()*11);
-     ySpeed = (int)(Math.random()*11);
+     xSpeed = (int)(Math.random()*6);
+     ySpeed = (int)(Math.random()*6);
    }
 	public void move(){
     x+= xSpeed*xDir;
     y+= ySpeed*yDir;
     if(x < 0 || x > 500){
       xDir *= -1;
-      xSpeed = (int)(Math.random()*11);
+      xSpeed = (int)(Math.random()*6);
     }
     if(y < 0 || y > 500){
       yDir *= -1;
-      ySpeed = (int)(Math.random()*11);
+      ySpeed = (int)(Math.random()*6);
     }
 	}
 	public void show(){
-		image(angry, x, y, width/20, height/20);
+		image(angry, x, y, width/17, height/17);
 	}
 }
 class JumboParticle extends NormalParticle
