@@ -5,9 +5,9 @@ Particle[] friends = new Particle[300];
 void setup()
 {
 	size(500,500);
-  neutral = loadImage("bob.png");
-  angry = loadImage("mad.png");
-  what = loadImage("watching.png");
+  neutral = loadImage("https://cdn.shopify.com/s/files/1/1061/1924/products/Neutral_Emoji_icon_9f1cc93a-f984-4b6c-896e-d24a643e4c28_large.png?v=1513249393");
+  angry = loadImage("https://cdn.shopify.com/s/files/1/1061/1924/products/Ghost_Emoji_2_large.png?v=1513251036");
+  what = loadImage("https://cdn.shopify.com/s/files/1/1061/1924/products/Emoji_icon_without_Mouth_large.png?v=1513251034");
   for(int a = 0; a < friends.length; a++){
     friends[a] = a%15 == 0? new JumboParticle() : new NormalParticle();
   }
